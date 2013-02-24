@@ -463,6 +463,9 @@ void Client::registerLuaFunctions()
     g_lua.bindClassMemberFunction<LocalPlayer>("getStates", &LocalPlayer::getStates);
     g_lua.bindClassMemberFunction<LocalPlayer>("getSkillLevel", &LocalPlayer::getSkillLevel);
     g_lua.bindClassMemberFunction<LocalPlayer>("getSkillBaseLevel", &LocalPlayer::getSkillBaseLevel);
+    // Evil Hero
+    g_lua.bindClassMemberFunction<LocalPlayer>("getAttributesLevel", &LocalPlayer::getAttributesLevel);
+    g_lua.bindClassMemberFunction<LocalPlayer>("getAttributesBaseLevel", &LocalPlayer::getAttributesBaseLevel);
     g_lua.bindClassMemberFunction<LocalPlayer>("getSkillLevelPercent", &LocalPlayer::getSkillLevelPercent);
     g_lua.bindClassMemberFunction<LocalPlayer>("getHealth", &LocalPlayer::getHealth);
     g_lua.bindClassMemberFunction<LocalPlayer>("getMaxHealth", &LocalPlayer::getMaxHealth);
@@ -609,7 +612,7 @@ void Client::registerLuaFunctions()
     g_lua.bindClassMemberFunction<UIMinimap>("getMinZoom", &UIMinimap::getMinZoom);
     g_lua.bindClassMemberFunction<UIMinimap>("getMaxZoom", &UIMinimap::getMaxZoom);
     g_lua.bindClassMemberFunction<UIMinimap>("getZoom", &UIMinimap::getZoom);
-    g_lua.bindClassMemberFunction<UIMinimap>("getScale", &UIMinimap::getScale); 
+    g_lua.bindClassMemberFunction<UIMinimap>("getScale", &UIMinimap::getScale);
     g_lua.bindClassMemberFunction<UIMinimap>("anchorPosition", &UIMinimap::anchorPosition);
     g_lua.bindClassMemberFunction<UIMinimap>("fillPosition", &UIMinimap::fillPosition);
     g_lua.bindClassMemberFunction<UIMinimap>("centerInPosition", &UIMinimap::centerInPosition);

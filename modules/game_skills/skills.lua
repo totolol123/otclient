@@ -18,7 +18,9 @@ function init()
     onMagicLevelChange = onMagicLevelChange,
     onBaseMagicLevelChange = onBaseMagicLevelChange,
     onSkillChange = onSkillChange,
-    onBaseSkillChange = onBaseSkillChange
+    onBaseSkillChange = onBaseSkillChange,
+	-- Evil Hero Player Attributes
+	onAttributeChange = onAttributeChange
   })
   connect(g_game, {
     onGameStart = refresh,
@@ -52,7 +54,9 @@ function terminate()
     onMagicLevelChange = onMagicLevelChange,
     onBaseMagicLevelChange = onBaseMagicLevelChange,
     onSkillChange = onSkillChange,
-    onBaseSkillChange = onBaseSkillChange
+    onBaseSkillChange = onBaseSkillChange,
+	-- Evil Hero Player Attributes
+	onAttributeChange = onAttributeChange
   })
   disconnect(g_game, {
     onGameStart = refresh,
@@ -123,6 +127,13 @@ function setSkillPercent(id, percent, tooltip)
   if tooltip then
     widget:setTooltip(tooltip)
   end
+end
+
+-- attributes
+function setAttributeValue(id, value)
+  local attribute = skillsWindow:recursiveGetChildById(id)
+  local widget = attribute:getChildById('value')
+  widget:setText(value)
 end
 
 function checkAlert(id, value, maxValue, threshold, greaterThan)
@@ -207,6 +218,11 @@ function refresh()
   for i=0,6 do
     onSkillChange(player, i, player:getSkillLevel(i), player:getSkillLevelPercent(i))
     onBaseSkillChange(player, i, player:getSkillBaseLevel(i))
+  end
+  
+  -- Evil Hero Player Attributes
+  for i=0,5 do
+    onAttributeChange(player, i, player:getAttributesLevel(i))
   end
 
   update()
@@ -300,6 +316,11 @@ end
 
 function onSoulChange(localPlayer, soul)
   setSkillValue('soul', soul)
+end
+
+-- Evil Hero Player Attributes
+function onAttributeChange(localPlayer, id, level, oldLevel)
+  setAttributeValue('attribute' .. id, level)
 end
 
 function onFreeCapacityChange(localPlayer, freeCapacity)

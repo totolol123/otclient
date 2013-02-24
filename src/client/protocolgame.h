@@ -176,6 +176,8 @@ private:
     void parsePlayerInfo(const InputMessagePtr& msg);
     void parsePlayerStats(const InputMessagePtr& msg);
     void parsePlayerSkills(const InputMessagePtr& msg);
+    // Evil Hero
+    void parsePlayerAttributes(const InputMessagePtr& msg);
     void parsePlayerState(const InputMessagePtr& msg);
     void parsePlayerCancelAttack(const InputMessagePtr& msg);
     void parseSpellCooldown(const InputMessagePtr& msg);

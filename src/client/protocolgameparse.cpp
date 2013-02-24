@@ -330,6 +330,10 @@ void ProtocolGame::parseMessage(const InputMessagePtr& msg)
             case Proto::GameServerChangeMapAwareRange:
                 parseChangeMapAwareRange(msg);
                 break;
+            // Herland parsing
+            case Proto::GameServerPlayerAttributes:
+                parsePlayerAttributes(msg);
+                break;
             default:
                 stdext::throw_exception(stdext::format("unhandled opcode %d", (int)opcode));
                 break;
@@ -1043,6 +1047,7 @@ void ProtocolGame::parsePlayerStats(const InputMessagePtr& msg)
     m_localPlayer->setBaseSpeed(baseSpeed);
     m_localPlayer->setRegenerationTime(regeneration);
     m_localPlayer->setOfflineTrainingTime(training);
+
 }
 
 void ProtocolGame::parsePlayerSkills(const InputMessagePtr& msg)
@@ -1063,8 +1068,25 @@ void ProtocolGame::parsePlayerSkills(const InputMessagePtr& msg)
 
         int levelPercent = msg->getU8();
 
+
         m_localPlayer->setSkill((Otc::Skill)skill, level, levelPercent);
         m_localPlayer->setBaseSkill((Otc::Skill)skill, baseLevel);
+    }
+}
+
+void ProtocolGame::parsePlayerAttributes(const InputMessagePtr& msg)
+{
+    for(int attr = 0; attr < Otc::LastAttribute; attr++) {
+        int level = msg->getU32();
+
+        int baseLevel;
+        if(g_game.getFeature(Otc::GameAttributeBase))
+            baseLevel = msg->getU32();
+        else
+            baseLevel = level;
+
+        m_localPlayer->setAttribute((Otc::Attribute)attr, level);
+        m_localPlayer->setBaseAttribute((Otc::Attribute)attr, baseLevel);
     }
 }
 

@@ -1313,6 +1313,7 @@ void Game::setProtocolVersion(int version)
         enableFeature(Otc::GameChallengeOnLogin);
         enableFeature(Otc::GameDoubleFreeCapacity);
         enableFeature(Otc::GameCreatureEmblems);
+        //enableFeature(Otc::GameDoubleHealth);
     }
 
     if(version >= 860) {

@@ -38,6 +38,9 @@ LocalPlayer::LocalPlayer()
     m_skillsBaseLevel.fill(-1);
     m_skillsLevelPercent.fill(-1);
 
+    m_attributesLevel.fill(-1);
+    m_attributesBaseLevel.fill(-1);
+
     m_health = -1;
     m_maxHealth = -1;
     m_freeCapacity = -1;
@@ -349,6 +352,37 @@ void LocalPlayer::setSkill(Otc::Skill skill, int level, int levelPercent)
         m_skillsLevelPercent[skill] = levelPercent;
 
         callLuaField("onSkillChange", skill, level, levelPercent, oldLevel, oldLevelPercent);
+    }
+}
+
+void LocalPlayer::setAttribute(Otc::Attribute attr, int level)
+{
+    if(attr >= Otc::LastAttribute) {
+        g_logger.traceError("invalid attribute");
+        return;
+    }
+
+    int oldLevel = m_attributesLevel[attr];
+
+    if(level != oldLevel) {
+        m_attributesLevel[attr] = level;
+
+        callLuaField("onAttributeChange", attr, level, oldLevel);
+    }
+}
+
+void LocalPlayer::setBaseAttribute(Otc::Attribute attr, int baseLevel)
+{
+    if(attr >= Otc::LastAttribute) {
+        g_logger.traceError("invalid attribute");
+        return;
+    }
+
+    int oldBaseLevel = m_attributesBaseLevel[attr];
+    if(baseLevel != oldBaseLevel) {
+        m_attributesBaseLevel[attr] = baseLevel;
+
+        callLuaField("onBaseAttributeChange", attr, baseLevel, oldBaseLevel);
     }
 }
 

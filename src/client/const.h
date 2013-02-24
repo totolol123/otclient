@@ -151,6 +151,16 @@ namespace Otc
         LastSkill
     };
 
+    enum Attribute {
+        Endurance = 0,
+        Dexterity,
+        Strength,
+        Wisdom,
+        Intelligence,
+        Faith,
+        LastAttribute
+    };
+
     enum Direction {
         North = 0,
         East,
@@ -353,6 +363,7 @@ namespace Otc
         GameForceFirstAutoWalkStep = 37,
         GameMinimapRemove = 38,
         GameDoubleShopSellAmount = 39,
+        GameAttributeBase = 40,
         // 51-100 reserved to be defined in lua
         LastGameFeature = 101
     };

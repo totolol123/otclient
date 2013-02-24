@@ -9,17 +9,17 @@ g_logger.info(os.date("== application started at %b %d %Y %X"))
 g_logger.info(g_app.getName() .. ' ' .. g_app.getVersion() .. ' rev ' .. g_app.getBuildRevision() .. ' (' .. g_app.getBuildCommit() .. ') built on ' .. g_app.getBuildDate() .. ' for arch ' .. g_app.getBuildArch())
 
 -- add data directory to the search path
-if not g_resources.addSearchPath(g_resources.getWorkDir() .. "data", true) then
+if not g_resources.addSearchPath(g_resources.getWorkDir() .. "/data", true) then
   g_logger.fatal("Unable to add data directory to the search path.")
 end
 
 -- add modules directory to the search path
-if not g_resources.addSearchPath(g_resources.getWorkDir() .. "modules", true) then
+if not g_resources.addSearchPath(g_resources.getWorkDir() .. "/modules", true) then
   g_logger.fatal("Unable to add modules directory to the search path.")
 end
 
 -- try to add mods path too
-g_resources.addSearchPath(g_resources.getWorkDir() .. "mods", true)
+g_resources.addSearchPath(g_resources.getWorkDir() .. "/mods", true)
 
 -- setup directory for saving configurations
 g_resources.setupUserWriteDir(g_app.getCompactName())

@@ -43,6 +43,8 @@ public:
 
     void setStates(int states);
     void setSkill(Otc::Skill skill, int level, int levelPercent);
+    void setAttribute(Otc::Attribute attr, int level);
+    void setBaseAttribute(Otc::Attribute attr, int baseLevel);
     void setBaseSkill(Otc::Skill skill, int baseLevel);
     void setHealth(double health, double maxHealth);
     void setFreeCapacity(double freeCapacity);
@@ -68,6 +70,9 @@ public:
     int getSkillLevel(Otc::Skill skill) { return m_skillsLevel[skill]; }
     int getSkillBaseLevel(Otc::Skill skill) { return m_skillsBaseLevel[skill]; }
     int getSkillLevelPercent(Otc::Skill skill) { return m_skillsLevelPercent[skill]; }
+    // Evil Hero
+    int getAttributesLevel(Otc::Attribute attr) { return m_attributesLevel[attr]; }
+    int getAttributesBaseLevel(Otc::Attribute attr) { return m_attributesBaseLevel[attr]; }
     int getVocation() { return m_vocation; }
     int getWalkPing() { return m_lastWalkPing; }
     double getHealth() { return m_health; }
@@ -139,6 +144,9 @@ private:
 
     ItemPtr m_inventoryItems[Otc::LastInventorySlot];
     Timer m_idleTimer;
+
+    std::array<int, Otc::LastAttribute> m_attributesLevel;
+    std::array<int, Otc::LastAttribute> m_attributesBaseLevel;
 
     std::array<int, Otc::LastSkill> m_skillsLevel;
     std::array<int, Otc::LastSkill> m_skillsBaseLevel;

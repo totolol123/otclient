@@ -31,7 +31,7 @@ SkillPercentPanel < ProgressBar
   phantom: false
 
 MiniWindow
-  id: skillWindow
+  id: skillsWindow
   !text: tr('Skills')
   height: 150
   icon: /images/topbuttons/skills
@@ -170,3 +170,45 @@ MiniWindow
         !text: tr('Fishing')
       SkillValueLabel
       SkillPercentPanel
+
+    SkillButton
+      id: attribute0
+      height: 15
+      SkillNameLabel
+        !text: tr('Endurance')
+      SkillValueLabel
+
+    SkillButton
+      id: attribute1
+      height: 15
+      SkillNameLabel
+        !text: tr('Dexterity')
+      SkillValueLabel
+
+    SkillButton
+      id: attribute2
+      height: 15
+      SkillNameLabel
+        !text: tr('Strength')
+      SkillValueLabel
+
+    SkillButton
+      id: attribute3
+      height: 15
+      SkillNameLabel
+        !text: tr('Wisdom')
+      SkillValueLabel
+
+    SkillButton
+      id: attribute4
+      height: 15
+      SkillNameLabel
+        !text: tr('Intelligence')
+      SkillValueLabel
+
+    SkillButton
+      id: attribute5
+      height: 15
+      SkillNameLabel
+        !text: tr('Faith')
+      SkillValueLabel

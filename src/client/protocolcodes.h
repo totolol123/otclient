@@ -142,7 +142,9 @@ namespace Proto {
         GameServerMarketLeave               = 247, // 944
         GameServerMarketDetail              = 248, // 944
         GameServerMarketBrowse              = 249, // 944
-        GameServerShowModalDialog           = 250  // 960
+        GameServerShowModalDialog           = 250,  // 960
+        // Heroland opcodes
+        GameServerPlayerAttributes          = 251
     };
 
     enum ClientOpcodes : uint8
