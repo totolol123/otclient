@@ -32,7 +32,6 @@ LocalPlayer::LocalPlayer()
     m_states = 0;
     m_vocation = 0;
     m_walkLockExpiration = 0;
-    m_lastWalkPing = -1;
 
     m_skillsLevel.fill(-1);
     m_skillsBaseLevel.fill(-1);
@@ -97,13 +96,6 @@ void LocalPlayer::walk(const Position& oldPos, const Position& newPos)
 {
     // a prewalk was going on
     if(m_preWalking) {
-        if(m_waitingWalkPong) {
-            if(newPos == m_lastPrewalkDestination)
-                m_lastWalkPing = m_walkPingTimer.ticksElapsed();
-
-            m_waitingWalkPong = false;
-        }
-
         // switch to normal walking
         m_preWalking = false;
         m_lastPrewalkDone = true;
@@ -116,7 +108,6 @@ void LocalPlayer::walk(const Position& oldPos, const Position& newPos)
     }
     // no prewalk was going on, this must be an server side automated walk
     else {
-        m_walkPingTimer.restart();
         m_serverWalking = true;
         if(m_serverWalkEndEvent)
             m_serverWalkEndEvent->cancel();
@@ -130,13 +121,8 @@ void LocalPlayer::preWalk(Otc::Direction direction)
     Position newPos = m_position.translatedToDirection(direction);
 
     // avoid reanimating prewalks
-    if(m_preWalking && m_lastPrewalkDestination == newPos)
+    if(m_preWalking && m_lastPrewalkDestination == newPos) {
         return;
-
-    m_waitingWalkPong = false;
-    if(m_walkPingTimer.ticksElapsed() > getStepDuration() && m_idleTimer.ticksElapsed() > getStepDuration()*2) {
-        m_waitingWalkPong = true;
-        m_walkPingTimer.restart();
     }
 
     m_preWalking = true;
@@ -157,9 +143,8 @@ void LocalPlayer::cancelWalk(Otc::Direction direction)
         stopWalk();
 
     m_lastPrewalkDone = true;
-    m_waitingWalkPong = false;
-    m_walkPingTimer.restart();
     m_idleTimer.restart();
+    lockWalk();
 
     if(m_autoWalkDestination.isValid()) {
         g_game.stop();

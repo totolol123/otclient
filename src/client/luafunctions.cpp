@@ -219,6 +219,7 @@ void Client::registerLuaFunctions()
     g_lua.bindSingletonFunction("g_game", "mount", &Game::mount, &g_game);
     g_lua.bindSingletonFunction("g_game", "requestItemInfo", &Game::requestItemInfo, &g_game);
     g_lua.bindSingletonFunction("g_game", "ping", &Game::ping, &g_game);
+    g_lua.bindSingletonFunction("g_game", "setPingDelay", &Game::setPingDelay, &g_game);
     g_lua.bindSingletonFunction("g_game", "changeMapAwareRange", &Game::changeMapAwareRange, &g_game);
     g_lua.bindSingletonFunction("g_game", "canPerformGameAction", &Game::canPerformGameAction, &g_game);
     g_lua.bindSingletonFunction("g_game", "canReportBugs", &Game::canReportBugs, &g_game);
@@ -486,7 +487,6 @@ void Client::registerLuaFunctions()
     g_lua.bindClassMemberFunction<LocalPlayer>("getTotalCapacity", &LocalPlayer::getTotalCapacity);
     g_lua.bindClassMemberFunction<LocalPlayer>("getInventoryItem", &LocalPlayer::getInventoryItem);
     g_lua.bindClassMemberFunction<LocalPlayer>("getVocation", &LocalPlayer::getVocation);
-    g_lua.bindClassMemberFunction<LocalPlayer>("getWalkPing", &LocalPlayer::getWalkPing);
     g_lua.bindClassMemberFunction<LocalPlayer>("isPremium", &LocalPlayer::isPremium);
     g_lua.bindClassMemberFunction<LocalPlayer>("isKnown", &LocalPlayer::isKnown);
     g_lua.bindClassMemberFunction<LocalPlayer>("isPreWalking", &LocalPlayer::isPreWalking);
