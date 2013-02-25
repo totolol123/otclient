@@ -116,6 +116,8 @@ namespace Otc
         InventorySlotFeet,
         InventorySlotRing,
         InventorySlotAmmo,
+        //Evil Hero new slot
+        InventorySlotDistance,
         InventorySlotPurse,
         InventorySlotExt1,
         InventorySlotExt2,

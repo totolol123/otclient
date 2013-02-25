@@ -44,11 +44,16 @@ RightSlot < InventoryItem
   id: slot5
   image-source: /images/game/slots/right-hand
   &position: {x=65535, y=5, z=0}
-
+  
 AmmoSlot < InventoryItem
   id: slot10
   image-source: /images/game/slots/ammo
   &position: {x=65535, y=10, z=0}
+
+DistanceSlot < InventoryItem
+  id: slot11
+  //image-source: /images/game/slots/distance
+  &position: {x=65535, y=11, z=0}
 
 MiniWindow
   id: inventoryWindow
@@ -102,6 +107,11 @@ MiniWindow
       margin-left: 5
 
     RightSlot
+      anchors.top: prev.bottom
+      anchors.horizontalCenter: prev.horizontalCenter
+      margin-top: 3
+
+    DistanceSlot
       anchors.top: prev.bottom
       anchors.horizontalCenter: prev.horizontalCenter
       margin-top: 3
