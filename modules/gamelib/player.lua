@@ -163,3 +163,10 @@ function Player:hasState(_state, states)
   end
   return false
 end
+
+function Player:setAttackMode(mode)
+local protocol = g_game.getProtocolGame()
+	if protocol then
+		protocol:sendExtendedOpcode(ClientChangeAttackMode, g_game.getCharacterName()..';'..mode)
+	end
+end

@@ -112,6 +112,7 @@ ClientOpcodes = {
 
     -- otclient ONLY
     ClientExtendedOpcode                = 50,
+	ClientChangeAttackMode				= 51,
 
     -- NOTE: add any custom opcodes in this range
     -- 51 - 99

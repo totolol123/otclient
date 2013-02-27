@@ -6,6 +6,7 @@ fightDefensiveBox = nil
 chaseModeButton = nil
 safeFightButton = nil
 fightModeRadioGroup = nil
+attackModeButton = nil
 
 function init()
   combatControlsButton = modules.client_topmenu.addRightGameToggleButton('combatControlsButton', tr('Combat Controls'), '/images/topbuttons/combatcontrols', toggle)
@@ -18,6 +19,7 @@ function init()
   fightDefensiveBox = combatControlsWindow:recursiveGetChildById('fightDefensiveBox')
   chaseModeButton = combatControlsWindow:recursiveGetChildById('chaseModeBox')
   safeFightButton = combatControlsWindow:recursiveGetChildById('safeFightBox')
+  attackModeButton = combatControlsWindow:recursiveGetChildById('attackModeBox')
 
   fightModeRadioGroup = UIRadioGroup.create()
   fightModeRadioGroup:addWidget(fightOffensiveBox)
@@ -27,6 +29,7 @@ function init()
   connect(fightModeRadioGroup, { onSelectionChange = onSetFightMode })
   connect(chaseModeButton, { onCheckChange = onSetChaseMode })
   connect(safeFightButton, { onCheckChange = onSetSafeFight })
+  connect(attackModeButton, { onCheckChange = onSetAttackMode })
   connect(g_game, {
     onGameStart = online,
     onGameEnd = offline,
@@ -79,6 +82,8 @@ function update()
 
   local safeFight = g_game.isSafeFight()
   safeFightButton:setChecked(not safeFight)
+  
+  attackModeButton:setChecked(attackMode == 2)
 end
 
 function check()
@@ -164,6 +169,16 @@ end
 
 function onSetSafeFight(self, checked)
   g_game.setSafeFight(not checked)
+end
+
+function onSetAttackMode(self, checked)
+	local attackMode = AttackMode
+	if checked then
+		attackMode = 2
+	else
+		attackMode = 1
+	end
+	Player:setAttackMode(attackMode)
 end
 
 function onMiniWindowClose()

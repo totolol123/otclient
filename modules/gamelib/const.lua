@@ -44,6 +44,8 @@ FightDefensive = 3
 DontChase = 0
 ChaseOpponent = 1
 
+AttackMode = 1
+
 GameProtocolChecksum = 1
 GameAccountNames = 2
 GameChallengeOnLogin = 3
