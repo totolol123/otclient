@@ -52,6 +52,13 @@ MiniWindow
       SkillValueLabel
 
     SkillButton
+      id: penalty
+      height: 15
+      SkillNameLabel
+        !text: tr('Penalty')
+      SkillValueLabel
+
+    SkillButton
       id: level
       SkillNameLabel
         !text: tr('Level')

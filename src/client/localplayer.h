@@ -50,6 +50,7 @@ public:
     void setFreeCapacity(double freeCapacity);
     void setTotalCapacity(double totalCapacity);
     void setExperience(double experience);
+    void setPenalty(double penalty);
     void setLevel(double level, double levelPercent);
     void setMana(double mana, double maxMana);
     void setMagicLevel(double magicLevel, double magicLevelPercent);
@@ -73,6 +74,7 @@ public:
     // Evil Hero
     int getAttributesLevel(Otc::Attribute attr) { return m_attributesLevel[attr]; }
     int getAttributesBaseLevel(Otc::Attribute attr) { return m_attributesBaseLevel[attr]; }
+    double getPenalty() { return m_penalty; }
     int getVocation() { return m_vocation; }
     double getHealth() { return m_health; }
     double getMaxHealth() { return m_maxHealth; }
@@ -157,6 +159,7 @@ private:
     double m_freeCapacity;
     double m_totalCapacity;
     double m_experience;
+    double m_penalty;
     double m_level;
     double m_levelPercent;
     double m_mana;

@@ -179,6 +179,7 @@ private:
     // Evil Hero
     void parsePlayerAttributes(const InputMessagePtr& msg);
     void parsePlayerState(const InputMessagePtr& msg);
+    void parsePlayerPenalty(const InputMessagePtr& msg);
     void parsePlayerCancelAttack(const InputMessagePtr& msg);
     void parseSpellCooldown(const InputMessagePtr& msg);
     void parseSpellGroupCooldown(const InputMessagePtr& msg);

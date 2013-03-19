@@ -334,6 +334,9 @@ void ProtocolGame::parseMessage(const InputMessagePtr& msg)
             case Proto::GameServerPlayerAttributes:
                 parsePlayerAttributes(msg);
                 break;
+            case Proto::GameServerPlayerPenalty:
+                parsePlayerPenalty(msg);
+                break;
             default:
                 stdext::throw_exception(stdext::format("unhandled opcode %d", (int)opcode));
                 break;
@@ -1048,6 +1051,12 @@ void ProtocolGame::parsePlayerStats(const InputMessagePtr& msg)
     m_localPlayer->setRegenerationTime(regeneration);
     m_localPlayer->setOfflineTrainingTime(training);
 
+}
+
+void ProtocolGame::parsePlayerPenalty(const InputMessagePtr& msg)
+{
+    double penalty = msg->getU32();
+    m_localPlayer->setPenalty(penalty);
 }
 
 void ProtocolGame::parsePlayerSkills(const InputMessagePtr& msg)

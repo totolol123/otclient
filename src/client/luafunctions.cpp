@@ -468,6 +468,7 @@ void Client::registerLuaFunctions()
     // Evil Hero
     g_lua.bindClassMemberFunction<LocalPlayer>("getAttributesLevel", &LocalPlayer::getAttributesLevel);
     g_lua.bindClassMemberFunction<LocalPlayer>("getAttributesBaseLevel", &LocalPlayer::getAttributesBaseLevel);
+    g_lua.bindClassMemberFunction<LocalPlayer>("getPenalty", &LocalPlayer::getPenalty);
     g_lua.bindClassMemberFunction<LocalPlayer>("getSkillLevelPercent", &LocalPlayer::getSkillLevelPercent);
     g_lua.bindClassMemberFunction<LocalPlayer>("getHealth", &LocalPlayer::getHealth);
     g_lua.bindClassMemberFunction<LocalPlayer>("getMaxHealth", &LocalPlayer::getMaxHealth);

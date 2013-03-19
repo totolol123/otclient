@@ -44,6 +44,7 @@ LocalPlayer::LocalPlayer()
     m_maxHealth = -1;
     m_freeCapacity = -1;
     m_experience = -1;
+    m_penalty = -1;
     m_level = -1;
     m_levelPercent = -1;
     m_mana = -1;
@@ -432,6 +433,16 @@ void LocalPlayer::setExperience(double experience)
         m_experience = experience;
 
         callLuaField("onExperienceChange", experience, oldExperience);
+    }
+}
+
+void LocalPlayer::setPenalty(double penalty)
+{
+    if(m_penalty != penalty) {
+        double oldPenalty = m_penalty;
+        m_penalty = penalty;
+
+        callLuaField("onPenaltyChange", penalty, oldPenalty);
     }
 }
 

@@ -64,6 +64,7 @@ namespace Proto {
         // NOTE: add any custom opcodes in this range
         // 51 - 99
         GameServerChangeMapAwareRange       = 51,
+        GameServerPlayerPenalty             = 60,
 
         // original tibia ONLY
         GameServerFullMap                   = 100,

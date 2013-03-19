@@ -4,6 +4,7 @@ skillsButton = nil
 function init()
   connect(LocalPlayer, {
     onExperienceChange = onExperienceChange,
+	onPenaltyChange = onPenaltyChange,
     onLevelChange = onLevelChange,
     onHealthChange = onHealthChange,
     onManaChange = onManaChange,
@@ -40,6 +41,7 @@ end
 function terminate()
   disconnect(LocalPlayer, {
     onExperienceChange = onExperienceChange,
+	onPenaltyChange = onPenaltyChange,
     onLevelChange = onLevelChange,
     onHealthChange = onHealthChange,
     onManaChange = onManaChange,
@@ -204,6 +206,7 @@ function refresh()
   expSpeedEvent = cycleEvent(checkExpSpeed, 30*1000)
 
   onExperienceChange(player, player:getExperience())
+  onPenaltyChange(player, player:getPenalty())
   onLevelChange(player, player:getLevel(), player:getLevelPercent())
   onHealthChange(player, player:getHealth(), player:getMaxHealth())
   onManaChange(player, player:getMana(), player:getMaxMana())
@@ -282,6 +285,10 @@ end
 
 function onExperienceChange(localPlayer, value)
   setSkillValue('experience', value)
+end
+
+function onPenaltyChange(localPlayer, value)
+  setSkillValue('penalty', value)
 end
 
 function onLevelChange(localPlayer, value, percent)
