@@ -1,0 +1,32 @@
+MiniWindow
+  id: aggressionWindow
+  !text: tr('Monster Aggression')
+  height: 130
+  icon: /images/topbuttons/aggression
+  @onClose: modules.game_aggression.onMiniWindowClose()
+  &save: true
+
+  Label
+    text: ?
+    text-align: center
+    phantom: false
+    !tooltip: tr('Aggression of the targeted monster\nFirst player has most aggression')
+    anchors.top: minimizeButton.top
+    anchors.right: minimizeButton.left
+    margin-right: 3
+    size: 14 14    
+  
+  MiniWindowContents
+    anchors.top: parent.top
+    margin-top: 0
+
+    Panel
+      id: aggressionPanel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-top: 25
+      padding-right: 5
+      layout:
+        type: verticalBox
+        fit-children: true

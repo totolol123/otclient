@@ -1,0 +1,9 @@
+AggressionLabel < Label
+  phantom: true
+  size: 65 20
+  margin-left: 2
+  text-offset: 4 0
+  color: green
+  
+  $first:
+    color: #008334

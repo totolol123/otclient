@@ -1,0 +1,9 @@
+Module
+  name: game_aggression
+  description: Manage monster aggression
+  author: Summ
+  website: 
+  sandboxed: true
+  scripts: [ aggression ]
+  @onLoad: init()
+  @onUnload: terminate()
